@@ -5,6 +5,9 @@ class PublicSite
 end
 
 NPOCentral::Application.routes.draw do
+  resources :auctions
+
+
   #Routes for the public site
   constraints PublicSite do
     root :to => 'content#index'
