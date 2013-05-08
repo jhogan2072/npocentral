@@ -1,11 +1,15 @@
 class User < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
-  # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+  belongs_to :authenticated_entity, polymorphic: true, dependent: :destroy
 
-  # Setup accessible (or protected) attributes for your model
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
   attr_accessible :email, :password, :password_confirmation, :remember_me
-  # attr_accessible :title, :body
+
+  before_save :set_authenticated_entity
+
+  private
+  def set_authenticated_entity
+    #make authenticated entity an employee if it is null, but will need to change this later
+    self.authenticated_entity = Employee.create unless self.authenticated_entity.present?
+  end
 end

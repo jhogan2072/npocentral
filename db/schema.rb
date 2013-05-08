@@ -21,6 +21,11 @@ ActiveRecord::Schema.define(:version => 20130506164150) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "admins", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "auctions", :force => true do |t|
     t.string   "name",        :null => false
     t.text     "description"
@@ -30,19 +35,37 @@ ActiveRecord::Schema.define(:version => 20130506164150) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "contacts", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "employees", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "organizations", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.integer  "authenticated_entity_id",                   :null => false
+    t.string   "authenticated_entity_type",                 :null => false
+    t.integer  "organization_id"
+    t.string   "email",                     :default => "", :null => false
+    t.string   "encrypted_password",        :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",             :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
