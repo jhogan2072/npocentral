@@ -1,0 +1,6 @@
+<h1>Editing auction</h1>
+
+<%= render partial: 'form', locals: { pathVar: employee_auction_path, methodVar: "put" }  %>
+
+<%= link_to 'Show', employee_auction_path(@auction) %> |
+<%= link_to 'Back', employee_auctions_path %>
