@@ -17,6 +17,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+#need this next gem because factory_girl_rails doesn't include a generator
+gem "rails3-generators", :group => :development
+
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
   gem 'factory_girl_rails'

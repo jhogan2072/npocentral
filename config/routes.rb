@@ -5,21 +5,31 @@ class PublicSite
 end
 
 NPOCentral::Application.routes.draw do
-  resources :auctions
-
-
   #Routes for the public site
   constraints PublicSite do
     root :to => 'content#index'
+
+    # Account Signup Routes
+    resources :accounts, :only => [:new, :create]
+
+    # Account login route - retrieve site address
+    match '/login' => 'accounts#siteaddress', :as => 'login'
+    match '/loginredirect' => 'accounts#loginredirect'
+
     # Catch-all that just loads views from app/views/content/*
     # e.g. http://thesite.com/content/about -> app/views/content/about.html.erb
     match 'content/:action' => 'content'
+
   end
 
   #The following routes are for the non-public site
-  devise_for :admins
   devise_for :users
+  #resources :accounts
+  resources :auctions
 
+  namespace :admin do
+    resources :accounts
+  end
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -63,7 +73,7 @@ NPOCentral::Application.routes.draw do
 
   # Sample resource route within a namespace:
   #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # Directs /admin/products/* to admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end

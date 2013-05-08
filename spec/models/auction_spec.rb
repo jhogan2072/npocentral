@@ -1,5 +1,9 @@
 require 'spec_helper'
 
 describe Auction do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'has a valid factory'
+  it 'is invalid without a name'
+  it 'is invalid without an account'
+  it 'is invalid without a lastname'
+  it "returns an auction's full name as a string"
 end

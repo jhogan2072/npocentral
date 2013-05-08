@@ -1,5 +1,6 @@
 class Auction < ActiveRecord::Base
   attr_accessible :description, :event_date, :name
+  belongs_to :account
   validates_presence_of :name
 
   def self.current_auction_name(current_session)

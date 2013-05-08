@@ -16,3 +16,12 @@ en:
   common:
     created: "%{model} was successfully created"
     updated: "%{model} was successfully updated"
+
+  account:
+    ownermissing: "You must define an owner for this account."
+    domainnotavailable: "The domain is not available, please choose another."
+    isnotavailable: "is not available"
+    accountupdated: "Your account has been updated."
+    newowneris: "The new account owner is"
+    edit:
+      editaccount: "Editing an Account"

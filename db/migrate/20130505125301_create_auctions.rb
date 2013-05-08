@@ -4,6 +4,7 @@ class CreateAuctions < ActiveRecord::Migration
       t.string :name, :null => false
       t.text :description
       t.datetime :event_date
+      t.integer :account_id
 
       t.timestamps
     end
