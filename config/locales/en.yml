@@ -16,6 +16,7 @@ en:
   common:
     created: "%{model} was successfully created"
     updated: "%{model} was successfully updated"
+    areyousure: "Are you sure?"
 
   account:
     ownermissing: "You must define an owner for this account."
@@ -25,3 +26,11 @@ en:
     newowneris: "The new account owner is"
     edit:
       editaccount: "Editing an Account"
+    new:
+      newaccount: "New Account"
+
+  email:
+    types:
+      personal: "Personal"
+      work: "Work"
+      other: "Other"

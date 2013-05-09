@@ -1,4 +1,4 @@
-class AccountsController < ApplicationController
+class Employee::AccountsController < ApplicationController
   #before_filter :authenticate_user!, except: [ :new, :create, :siteaddress, :loginredirect ]
   #before_filter :build_user, :only => [:new, :create]
   layout :resolve_layout
@@ -26,28 +26,6 @@ class AccountsController < ApplicationController
 
   def loginredirect
     redirect_to url_for("http://" << params[:siteaddress] << "." << APP_CONFIG['base_domain'])
-  end
-
-  # GET /accounts
-  # GET /accounts.json
-  def index
-    @accounts = Account.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @accounts }
-    end
-  end
-
-  # GET /accounts/1
-  # GET /accounts/1.json
-  def show
-    @account = Account.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @account }
-    end
   end
 
   # GET /accounts/new
@@ -95,18 +73,6 @@ class AccountsController < ApplicationController
         format.html { render action: "edit" }
         format.json { render json: @account.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /accounts/1
-  # DELETE /accounts/1.json
-  def destroy
-    @account = Account.find(params[:id])
-    @account.destroy
-
-    respond_to do |format|
-      format.html { redirect_to accounts_url }
-      format.json { head :no_content }
     end
   end
 
