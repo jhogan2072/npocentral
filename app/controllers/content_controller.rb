@@ -1,4 +1,5 @@
 class ContentController < ApplicationController
+  layout 'public'
   def show
     if current_user
       case current_user.authenticated_entity_type
